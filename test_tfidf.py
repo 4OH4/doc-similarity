@@ -49,14 +49,13 @@ def test_rank_documents2(search_terms):
         assert isinstance(item, float)
 
 
-@given(document1=text(), document2=text())
+@given(search_terms=text(), document1=text(), document2=text())
 def test_rank_documents3(search_terms, document1, document2):
     """
     Test similarity match - fuzzing
     """
     
     # given
-    search_terms = 'hello world'
     documents = [document1, document2]
 
     # when

@@ -1,3 +1,5 @@
-gensim==3.8.1
-numpy==1.18.1
-nltk==3.4.5
+numpy~=1.18
+scikit-learn~=0.22
+gensim~=3.8
+nltk~=3.4
+jupyterlab
