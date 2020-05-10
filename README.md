@@ -15,9 +15,10 @@ The code in this repository utilises, is derived from and extends the excellent 
 
 ## Setup and requirements
 Python 3 (v3.7 tested) and the following packages (all available via `pip`):
-    pip install scikit-learn~=0.22
-    pip install gensim~=3.8
-    pip install nltk~=3.4
+
+    pip install scikit-learn~=0.22  
+    pip install gensim~=3.8  
+    pip install nltk~=3.4  
 
 Or install via the `requirements.txt` file:
 
@@ -32,6 +33,7 @@ After installing the requirements (if necessary), open and run `examples.ipynb` 
 This module is a wrapper around the Scikit-Learn `TfidfVectorizer`, with some additional functionality from `nltk` to handle stopwords, lemmatization and cosine similarity calculation. To run:
 
     from tfidf import rank_documents
+    
     document_scores = rank_documents(search_terms, documents)
 
 ## Using the standalone DocSim class
@@ -39,7 +41,9 @@ This module is a wrapper around the Scikit-Learn `TfidfVectorizer`, with some ad
 There is a self-contained class - DocSim - for running sematic similarity queries. This can be imported as a module and used without additional code:
 
     from docsim import DocSim
+    
     docsim = DocSim(verbose=True)
+    
     similarities = docsim.similarity_query(query_string, documents)
 
 By default, a GloVe word embedding model is loaded (`glove-wiki-gigaword-50`), although a custom model can also be used.
