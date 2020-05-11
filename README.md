@@ -9,6 +9,8 @@ This repository includes two methods of ranking text content by similarity:
 
 Given a search query (text string) and a document corpus, these methods calculate a similarity metric for each document vs the query. Both methods exist as standalone modules, with explanation and demonstration code inside `examples.ipynb`.
 
+There is an associated [blog post](https://towardsdatascience.com/how-to-rank-text-content-by-semantic-similarity-4d2419a84c32?source=friends_link&sk=a23730c6fad2744440eb8d4561088aa8) that explains the contents of this repository in more detail.
+
 ## Acknowledgements
 
 The code in this repository utilises, is derived from and extends the excellent [Scikit-Learn](https://scikit-learn.org/), [Gensim](https://radimrehurek.com/gensim/) and [NLTK](https://www.nltk.org/) packages. 
