@@ -9,12 +9,9 @@ https://github.com/RaRe-Technologies/gensim/blob/develop/docs/notebooks/soft_cos
 
 """
 
-import logging
 from re import sub
 import threading
 from multiprocessing import cpu_count
-
-import numpy as np
 
 import gensim.downloader as api
 from gensim.utils import simple_preprocess
@@ -67,14 +64,18 @@ class DocSim:
 
         self.verbose = verbose
 
-        self.setup_model(model)
+        self._load_model(model)
 
         if stopwords is None:
             self.stopwords = nltk_stop_words
         else:
             self.stopwords = stopwords
 
-    def setup_model(self, model):
+    def _load_model(self, model):
+        # Pass through to _setup_model (overridden in threaded)
+        self._setup_model(model)
+
+    def _setup_model(self, model):
         # Determine which model to use, download/load it, and create the similarity_index
         
         if isinstance(model, Word2VecKeyedVectors):
@@ -171,22 +172,12 @@ class DocSim_threaded(DocSim):
     docsim = DocSim_threaded()
     docsim.similarity_query(query_string, documents)
     """
-    
-    def __init__(self, model=None, stopwords=None, verbose=False):
-        # Constructor
 
-        self.verbose = verbose
-
-        self._threaded_load(model)
-            
-        if stopwords is None:
-            self.stopwords = nltk_stop_words
-
-    def _threaded_load(self, model):
+    def _load_model(self, model):
         """
         # Setup the model in a separate thread
         """
 
-        self.thread = threading.Thread(target=self.setup_model, args=[model])
+        self.thread = threading.Thread(target=self._setup_model, args=[model])
         self.thread.setDaemon(True)
         self.thread.start()
