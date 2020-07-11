@@ -1,3 +1,5 @@
+![Python application](https://github.com/4OH4/doc-similarity/workflows/Python%20application/badge.svg)
+
 # doc-similarity
 https://github.com/4OH4/doc-similarity  
 
